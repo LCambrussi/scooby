@@ -13,6 +13,8 @@ fundoStart = pygame.image.load("assets/fundoStart1.jpg")
 fundoDead = pygame.image.load("assets/fundoDead1.webp")
 monstro1 = pygame.image.load("assets/monstro1.png")
 monstro2 = pygame.image.load("assets/monstro2.png")
+monstro3 = pygame.image.load("assets/monstro3.png")
+monstro3 = pygame.transform.scale(monstro3, (70,50))
 
 
 tamanho = (900,700)
@@ -42,6 +44,10 @@ def jogar(nome):
     velocidadeMonstro1 = 1
     posicaoXMonstro2 = 400
     posicaoYMonstro2 = -240
+    posicaoXmonstro3 = random.randint(0, tamanho[0] - 50)
+    posicaoYmonstro3 = random.randint(0, tamanho[1] - 50)
+    movimentoXmonstro3 = random.choice([-1, 1])
+    movimentoYmonstro3 = random.choice([-1, 1])
     velocidadeMonstro2 = 1
     pontos = 0
     larguraPersona = 250
@@ -121,7 +127,15 @@ def jogar(nome):
             if len( list( set(pixelsMonstro2X).intersection(set(pixelsPersonaX))   ) )  > dificuldade:
                 dead(nome, pontos)
         
+        posicaoXmonstro3 += movimentoXmonstro3
+        posicaoYmonstro3 += movimentoYmonstro3
 
+        if posicaoXmonstro3 <= 0 or posicaoXmonstro3 >= tamanho[0] - 50:
+            movimentoXmonstro3 = -movimentoXmonstro3
+        if posicaoYmonstro3 <= 0 or posicaoYmonstro3 >= tamanho[1] - 50:
+            movimentoYmonstro3 = -movimentoYmonstro3
+
+        tela.blit(monstro3, (posicaoXmonstro3, posicaoYmonstro3))
 
         pygame.display.update()
         relogio.tick(60)
