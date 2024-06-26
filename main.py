@@ -21,19 +21,19 @@ tamanho = (900,700)
 tela = pygame.display.set_mode( tamanho ) 
 pygame.display.set_caption("Scooby Doo")
 pygame.display.set_icon(icone)
-missileSound = pygame.mixer.Sound("assets/missile.wav")
-explosaoSound = pygame.mixer.Sound("assets/explosao.wav")
+zumbiSound = pygame.mixer.Sound("assets/zumbi.mp3")
+explosaoSound = pygame.mixer.Sound("assets/musica2.mp3")
 fonte = pygame.font.SysFont("comicsans",28)
 fonteStart = pygame.font.SysFont("comicsans",55)
 fonteMorte = pygame.font.SysFont("arial",120)
-pygame.mixer.music.load("assets/ironsound.mp3")
+pygame.mixer.music.load("assets/musica1.mp3")
 
 branco = (255,255,255)
 preto = (0, 0 ,0 )
 amarelo = (225, 255, 0)
 
 def jogar(nome):
-    pygame.mixer.Sound.play(missileSound)
+    pygame.mixer.Sound.play(zumbiSound)
     pygame.mixer.music.play(-1)
     posicaoXPersona = 118
     posicaoYPersona = 202 
@@ -94,7 +94,7 @@ def jogar(nome):
             pontos = pontos + 1
             velocidadeMonstro1 = velocidadeMonstro1 + 1
             posicaoXMonstro1 = random.randint(0,800)
-            pygame.mixer.Sound.play(missileSound)
+            pygame.mixer.Sound.play(zumbiSound)
 
         posicaoYMonstro2 = posicaoYMonstro2 + velocidadeMonstro2
         if posicaoYMonstro2 > 600:
@@ -102,7 +102,7 @@ def jogar(nome):
             pontos = pontos + 1
             velocidadeMonstro2 = velocidadeMonstro2 + 1
             posicaoXMonstro2 = random.randint(0,800)
-            pygame.mixer.Sound.play(missileSound)
+            pygame.mixer.Sound.play(zumbiSound)
             
             
         tela.blit( monstro1, (posicaoXMonstro1, posicaoYMonstro1) )
