@@ -30,7 +30,7 @@ pygame.mixer.music.load("assets/ironsound.mp3")
 
 branco = (255,255,255)
 preto = (0, 0 ,0 )
-
+amarelo = (225, 255, 0)
 
 def jogar(nome):
     pygame.mixer.Sound.play(missileSound)
@@ -57,7 +57,8 @@ def jogar(nome):
     larguaMonstro2  = 152
     alturaMonstro2  = 218
     dificuldade  = 30
-
+    raio_bolinha = 30
+    crescendo = True
 
 
     while True:
@@ -110,6 +111,18 @@ def jogar(nome):
         
         texto = fonte.render(nome+"- Pontos: "+str(pontos), True, branco)
         tela.blit(texto, (10,10))
+         
+        pygame.draw.circle(tela, amarelo, (750, 50), raio_bolinha)
+        
+        if crescendo: 
+            raio_bolinha += 1
+        if raio_bolinha >= 50:
+            crescendo = False
+        else:
+            raio_bolinha -= 1
+            if raio_bolinha <= 30:
+                crescendo =  True
+       
         
         pixelsPersonaX = list(range(posicaoXPersona, posicaoXPersona+larguraPersona))
         pixelsMonstro1X = list(range(posicaoXMonstro1, posicaoXMonstro1 + larguaMonstro1))
