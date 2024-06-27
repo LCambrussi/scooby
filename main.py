@@ -75,9 +75,10 @@ def jogar(nome):
                 movimentoXPersona = 0     
 
                 
+                
         posicaoXPersona = posicaoXPersona + movimentoXPersona                        
         
-        if posicaoXPersona < 0 :
+        if posicaoXPersona < 0:
             posicaoXPersona = 10
         elif posicaoXPersona >700:
             posicaoXPersona = 540
