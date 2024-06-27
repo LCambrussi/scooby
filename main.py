@@ -6,14 +6,14 @@ from tkinter import simpledialog
 pygame.init()
 
 relogio = pygame.time.Clock()
-icone  = pygame.image.load("assets/cachorro.ico")
-iron = pygame.image.load("assets/scooby.png")
-fundo = pygame.image.load("assets/fundo2.jpg")
-fundoStart = pygame.image.load("assets/fundoStart1.jpg")
-fundoDead = pygame.image.load("assets/fundoDead1.webp")
-monstro1 = pygame.image.load("assets/monstro1.png")
-monstro2 = pygame.image.load("assets/monstro2.png")
-monstro3 = pygame.image.load("assets/monstro3.png")
+icone  = pygame.image.load("recursos/cachorro.ico")
+iron = pygame.image.load("recursos/scooby.png")
+fundo = pygame.image.load("recursos/fundo2.jpg")
+fundoStart = pygame.image.load("recursos/fundoStart1.jpg")
+fundoDead = pygame.image.load("recursos/fundoDead1.webp")
+monstro1 = pygame.image.load("recursos/monstro1.png")
+monstro2 = pygame.image.load("recursos/monstro2.png")
+monstro3 = pygame.image.load("recursos/monstro3.png")
 monstro3 = pygame.transform.scale(monstro3, (70,50))
 
 
@@ -21,12 +21,12 @@ tamanho = (900,700)
 tela = pygame.display.set_mode( tamanho ) 
 pygame.display.set_caption("Scooby Doo")
 pygame.display.set_icon(icone)
-zumbiSound = pygame.mixer.Sound("assets/zumbi.mp3")
-explosaoSound = pygame.mixer.Sound("assets/musica2.mp3")
+zumbiSound = pygame.mixer.Sound("recursos/zumbi.mp3")
+explosaoSound = pygame.mixer.Sound("recursos/musica2.mp3")
 fonte = pygame.font.SysFont("comicsans",28)
 fonteStart = pygame.font.SysFont("comicsans",55)
 fonteMorte = pygame.font.SysFont("arial",120)
-pygame.mixer.music.load("assets/musica1.mp3")
+pygame.mixer.music.load("recursos/musica1.mp3")
 
 branco = (255,255,255)
 preto = (0, 0 ,0 )
@@ -50,8 +50,8 @@ def jogar(nome):
     movimentoYmonstro3 = random.choice([-1, 1])
     velocidadeMonstro2 = 1
     pontos = 0
-    larguraPersona = 250
-    alturaPersona = 127
+    larguraPersona = 118
+    alturaPersona = 202
     larguaMonstro1  = 152
     alturaMonstro1  = 218
     larguaMonstro2  = 152
@@ -112,17 +112,17 @@ def jogar(nome):
         texto = fonte.render(nome+"- Pontos: "+str(pontos), True, branco)
         tela.blit(texto, (10,10))
          
-        pygame.draw.circle(tela, amarelo, (750, 50), raio_bolinha)
         
         if crescendo: 
             raio_bolinha += 1
-        if raio_bolinha >= 50:
-            crescendo = False
+            if raio_bolinha >= 50:
+                crescendo = False
         else:
             raio_bolinha -= 1
             if raio_bolinha <= 30:
                 crescendo =  True
        
+        pygame.draw.circle(tela, amarelo, (750, 50), raio_bolinha)
         
         pixelsPersonaX = list(range(posicaoXPersona, posicaoXPersona+larguraPersona))
         pixelsMonstro1X = list(range(posicaoXMonstro1, posicaoXMonstro1 + larguaMonstro1))
